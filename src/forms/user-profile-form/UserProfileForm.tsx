@@ -1,5 +1,6 @@
 import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
+import { Helmet } from "react-helmet";
 import {
   Form,
   FormControl,
@@ -45,6 +46,10 @@ const UserProfileForm = ({ onSave, isLoading, currentUser, title = "User Profile
   }, [currentUser, form]);
   return (
     <Form {...form}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>User Profile | FeastFlow</title>
+      </Helmet>
       <form
         onSubmit={form.handleSubmit(onSave)}
         className="space-y-4 bg-gray-50 rounded-lg md:p-10"

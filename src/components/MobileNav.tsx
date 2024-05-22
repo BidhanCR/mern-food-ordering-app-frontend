@@ -21,11 +21,18 @@ const MobileNav = () => {
         <SheetTitle>
           {isAuthenticated ? (
             <span className="flex items-center font-bold gap-2">
-              <CircleUserRound className="text-orange-500" />
+              {user?.picture ? (
+                <img
+                  src={user?.picture}
+                  className="h-8 w-8 object-cover rounded-full mr-1"
+                />
+              ) : (
+                <CircleUserRound className="text-orange-500" />
+              )}
               {user?.email}
             </span>
           ) : (
-            <span>Welcome to MernEats.com!</span>
+            <span>Welcome to FeastFlow!</span>
           )}
         </SheetTitle>
         <SheetDescription className="flex flex-col gap-4">
@@ -33,8 +40,11 @@ const MobileNav = () => {
             <MobileNavLinks />
           ) : (
             <Button
-            onClick={async()=> await loginWithRedirect()}
-            className="flex-1 font-bold bg-orange-500">Log In</Button>
+              onClick={async () => await loginWithRedirect()}
+              className="flex-1 font-bold bg-orange-500"
+            >
+              Log In
+            </Button>
           )}
         </SheetDescription>
       </SheetContent>

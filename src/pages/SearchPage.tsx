@@ -6,6 +6,7 @@ import SearchResultCard from "@/components/SearchResultCard";
 import SearchResultInfo from "@/components/SearchResultInfo";
 import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
 export type SearchState = {
@@ -72,6 +73,10 @@ const SearchPage = () => {
   }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Search - {city} | FeastFlow</title>
+      </Helmet>
       <div id="cuisines-list">
         <CuisinesFilter
           selectedCuisines={searchState.selectedCuisines}

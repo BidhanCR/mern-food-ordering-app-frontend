@@ -9,6 +9,7 @@ import { Card, CardFooter } from "@/components/ui/card";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { MenuItem as MenuItemType } from "@/types/types";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
 export type CartItem = {
@@ -104,6 +105,10 @@ const DetailPage = () => {
   }
   return (
     <div className="flex flex-col gap-10">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Restaurant Details - {restaurantId} | FeastFlow</title>
+      </Helmet>
       <AspectRatio ratio={16 / 5}>
         <img
           src={restaurant.imageUrl}
