@@ -3,6 +3,9 @@ import appDownloadImage from "../assets/appDownload.png";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import PopularCities from "@/components/PopularCities";
+import OwnerInvitation from "@/components/OwnerInvitation";
+
 const HomePage = () => {
   const navigate = useNavigate();
   const handleSearchSubmit = (searchFormValues: SearchForm) => {
@@ -16,7 +19,7 @@ const HomePage = () => {
         <meta charSet="utf-8" />
         <title>Home | FeastFlow</title>
       </Helmet>
-      <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
+      <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16 z-20">
         <h1 className="text-5xl font-bold tracking-tight text-orange-600">
           Tuck into a take away today
         </h1>
@@ -33,12 +36,14 @@ const HomePage = () => {
             Order takeaway even faster!
           </span>
           <span>
-            Download the MernEats App for faster ordering and personalized
+            Download the FeastFlow App for faster ordering and personalized
             recommendations
           </span>
           <img src={appDownloadImage} />
         </div>
       </div>
+      <OwnerInvitation/>
+      <PopularCities />
     </div>
   );
 };

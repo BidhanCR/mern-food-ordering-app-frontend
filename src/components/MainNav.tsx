@@ -4,15 +4,15 @@ import UsernameMenu from "./UsernameMenu.tsx";
 import { Link } from "react-router-dom";
 import { useGetMyOrders } from "@/api/OrderApi.ts";
 const MainNav = () => {
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
-  const { orders } = useGetMyOrders();
+  const { loginWithRedirect, isAuthenticated, isLoading:isAuthLoading } = useAuth0();
+  const { orders, isLoading } = useGetMyOrders();
   return (
     <span className="flex space-x-2 items-center">
       {isAuthenticated ? (
         <>
           <Link
             to="/order-status"
-            className={`font-bold hover:text-orange-500 ${orders?.length === 0 ? "hidden": "block"}`}
+            className={`font-bold hover:text-orange-500 ${isLoading ? "hidden": orders?.length === 0 ? "hidden": "block"}`}
           >
             Order Status
           </Link>
@@ -24,7 +24,7 @@ const MainNav = () => {
           variant="ghost"
           onClick={async () => await loginWithRedirect()}
         >
-          Log In
+          {isAuthLoading ? "": "Log in"}
         </Button>
       )}
     </span>

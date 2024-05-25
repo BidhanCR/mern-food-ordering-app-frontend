@@ -1,5 +1,6 @@
 import { useSearchRestaurants } from "@/api/RestaurantApi";
 import CuisinesFilter from "@/components/CuisinesFilter";
+import Loader from "@/components/Loader";
 import PaginationSelector from "@/components/PaginationSelector";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
@@ -65,11 +66,11 @@ const SearchPage = () => {
     }));
   };
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <Loader/>;
   }
 
   if (!results?.data || !city) {
-    return <span>No results found</span>;
+    return <span className="flex items-center justify-center text-2xl">No restaurant found!</span>;
   }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
